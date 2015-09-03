@@ -1,0 +1,53 @@
+Oppgave 1
+a) X er bundet, P og Y er frie
+b) X og Y er bundet, Z er fri
+c) X og Y er bundet, P, Z og Q er frie
+d) Y er bundet, Y, P og Q er frie
+
+Oppgave 2
+a) Q er en ekstern referanse
+b) P er en ekstren referanse
+c) Q, Z og U er eksterne referanser
+d) Q og U er eksterne referanser
+e) Q er en ekstern referanse
+
+Oppgave 4
+Vi ønsker å innføre noen regler slik at vi kan bruke følgende setning:
+local <x_1>, <x_2>...<x_n> in <s> end, E
+
+Vi lager først nye variabler x1...xn
+Vi lager et nytt miljø E' som er lik E + {<x_1> -> x1...<x_n> -> xn}
+Dytt så (<s>, E) på stakken
+
+Oppgave 5
+a)
+([(local B in if B then skip else skip end end, phi)], phi)
+([(if B then skip else skip end, {B -> b})], {b})
+
+b)
+([(local B in B = false if B then skip else skip end end, phi)], phi)
+([(B=false, {B -> b}) (if B then skip else skip end, {B -> b})], {b})
+([(if B then skip else skip end, {B -> b})], {b ->}], {b -> false})
+([( skip, {B -> b})], {b -> false})
+(nil, {b -> false})
+
+c)
+([(local X Z A B P in proc {P X Y} Y = X + Z end Z = 7 X = 4 {P X A} {P X B} end, phi)], phi)
+([(proc {P X Y} Y = X + Z end Z = 7 X = 4 {P X A} {P X B}, {X -> x, Z -> z, A -> a, B -> b, P -> p})], {x, z, a b p})
+([(proc {P X Y} Y = X + Z end,{X->x, Z->z, A->a, B->b, P->p}),(Z = 7 X = 4 {P X A} {P A B}, {X->x, Z->z, A->a, B->b, P->p})],{x, z, a, b, p})
+([(Z = 7 X = 4 {P X A} {P A B}, {X->x, Z->z, A->a, B->b, P->p})], {x, z, a, b, p->(proc {$ X Y} Y = X+Z end, {Z->z})})
+([(Z = 7, {X->x, Z->z, A->a, B->b, P->p}), (X = 4 {P X A} {P A B}, {X->x, Z->z, A->a, B->b, P->p})],{x, z, a, b, p->(proc {$ X Y} Y = X+Z end, {Z->z})})
+([(X = 4 {P X A} {P A B},{X->x, Z->z, A->a, B->b, P->p})],{x, z->7, a, b, p->(proc {$ X Y} Y = X+Z end, {Z->z})})
+([(X = 4, {X->x, Z->z, A->a, B->b, P->p}), ({P X A} {P A B}, {X->x, Z->z, A->a, B->b, P->p})], {x, z->7, a, b, p->(proc {$ X Y} Y = X+Z end, {Z->z})})
+([({P X A} {P A B}, {X->x, Z->z, A->a, B->b, P->p})],{x->4, z->7, a, b, p->(proc {$ X Y} Y = X+Z end, {Z->z})})
+([({P X A}, {X->x, Z->z, A->a, B->b, P->p}),({P A B}, {X->x, Z->z, A->a, B->b, P->p})],{x->4, z->7, a, b, p->(proc {$ X Y} Y = X+Z end, {Z->z})})
+([({P A B}, {X->x, Z->z, A->a, B->b, P->p})],{x->4, z->7, a->11, b,p->( proc { $ X Y } Y = X+Z end, {Z->z})})
+([(Y = X+Z, {Z->z, X->a, Y->b} ),{x->4, z->7, a->11, b,p->( proc { $ X Y } Y = X+Z end, {Z->z})})
+(nil,{x->4, z->7, a->11, b->18, p->( proc { $ X Y } Y = X+Z end, {Z->z})})
+
+Oppgave 6
+a) Ikke unifiserbar
+b) X = a, Y = a, Z = a
+c) D = 1|2|3|4|Y|nil, X = 3|4|Y|nil
+d) Vi får en ekstra 2 på slutten av lista, så vi kan ikke få noe unifiserbart
+e) X = 1|2|3|4|3|4|3|4....., Y = 3|4|3|4|3|4|3|4....

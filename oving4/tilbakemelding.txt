@@ -1,0 +1,6 @@
+Vedrørende strømmer i Oz.
+Jeg synes virkelig dere burde ha gitt et eksempel på hvordan man bruker strømmer i Oz. Jeg har brukt mer tid på å få det til å fungere, enn de fleste oppgavene.
+Hvis øvingen var å gå igjennom SimGraph-koden, så hadde jeg forstått det, men så vidt jeg vet er det ikke meninga.
+
+Ser nå at på oppgave 7 sier dere åssen man lager strømmer, godt mulig at dette burde gjøres tidligere i oppgaven. Vanskelig å progge i blinde frem til oppgave 7.
+Tar masse selvkritikk på at jeg ikke leste igjennom hele øvingen før jeg starta, men la oss være ærlige: ingen gjør det.

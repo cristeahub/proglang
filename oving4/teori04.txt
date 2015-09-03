@@ -1,0 +1,12 @@
+Task 1
+
+a)
+Når man kjører Nth får man inn en strøm, et tall og en løs (unbound / ubundet / ikke-bundet) verdi. Man vil så gå igjennom strømmen og hente ut et antall verdier. Man har også en teller som viser hvor mange verdier man har tatt ut. Når man har tatt ut N verdier, legger man _ til på slutten for å lage en strøm av dette, og returnerer denne.
+
+b)
+En liste har en nil som siste element, mens en strøm har en ubundet verdi som siste element. Med dette vil programmet vente på en verdi der, og man kan binde denne verdien til en annen verdi, pluss en ubundet verdi igjen for å utvide strømmen.
+
+c)
+Lat utføring betyr at funksjonen ikke blir utført før den er absolutt nødt til å gjøre dette. Så hvis den blir kallt, så vil den bare legges i en slags liste over ting som en eller annen gang kanskje burde utføres. Hvis man så printer ut resultatet av funksjonen, så vil funksjonen kjøres.
+
+Når det kommer til exceptions er det veldig vanskelig å få disse til å fungere, siden at rekkefølgen til utføringene ikke alltid vites. Hvis man ønsker å introdusere dette må man innføre en del lister over hva som skjer, og hva som skal skje, og en slags virtuell maskin som sjekker utførelsene i samsvar med miljøet da den egentlig skulle kjørt. Dette gjør nok mer skade enn noe annet.

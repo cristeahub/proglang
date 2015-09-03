@@ -1,0 +1,5 @@
+Browse-funksjonen bruker dataflyt. Det vil si at når den skal printe noe, så venter den og ser hva det den skal printe blir, før den tar affære. Derfor vil den se at Y blir satt etter at den egentlig skal printe, men printer hva Y blir satt til.
+
+Dette forutsetter at hele fila blir fødd inn, sånn at den kan kjøre igjennom mer av koden før den printer ut. Hvis man før bare én og én linje inn, vil man ikke få denne effekten.
+
+En slik funksjon er veldig nyttig. Man kan blant annet deklarere en del variabler, og deretter Browse dem med én gang, slik at man kan ha det klart hva de faktisk blir satt til. Man slipper dermed å logge spesifike steder i koden.

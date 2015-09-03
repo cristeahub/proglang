@@ -1,0 +1,21 @@
+Task 2
+a)
+
+No, there are squences that can be generated for this syntax that does not correspond to a valid program.
+And example fo this would be:
+
+A B in
+    A = 2
+    B = 5
+    A = B
+
+This is legal because you can assign any identifier to an identifier, but the program will not work.
+Unification will not work as 5 and 4 are not the same value.
+
+
+b)
+
+Parsing is very relevant. A computer needs a very well predefined way of working.
+We can write a thing in several different ways, and with only tokens we might fall into trouble.
+There might be more than one way to interpret the task, and this will be problamatic.
+The parsing is reading code, and outputting one unique output. This is how a machine works, and this is how we need it to work.

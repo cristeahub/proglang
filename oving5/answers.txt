@@ -1,0 +1,106 @@
+Exercise 5 Programming languages
+
+Task 1
+a)
+<exp> ::= (<int> | <exp> <op> <exp>)
+<op> ::= + | - | * | /
+<int> ::= <not_zero> | <digit>
+<digit> ::= 0 | <not_zero>
+<not_zero> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+b)
+Some problems might occure. There could be ambiguity in some problems. For example if we have the calculation 4/4-3, there is more than one way to read this. Either there could be (4/4)-3 which is -2 or 4/(4-3) which is 1.
+We can solve this by having precedent operators. Some operators should be completed before others, and these are as near the leaf nodes in the tree as possible.
+
+There will also be problems with determening which one of two equal operators should be handeled first. So 4-4-3 could either be (4-4)-3 or 4-(4-3).
+We can solve this by defining an associative property, so we either calculate from the left or from the right.
+
+The new expanded grammar will be:
+
+<exp> ::= <int> | (<exp> {<op> <exp>}) // {<op> <exp>} means left associativity I believe
+<op> ::= * | / | + | - // I believe this means * comes before / and + before minus
+<int> ::= <not_zero> | <digit>
+<digit> ::= 0 | <not_zero>
+<not_zero> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+Just to clarify: I want to have left associativity on my operators, and want * to have higher precedence than / and same for + over -.
+
+
+Task 2
+declare
+fun {Evaluate record}
+    case record of int(I) then I
+    [] plus(A B) then {Evaluate A} + {Evaluate B}
+    [] minus(A B) then {Evaluate A} - {Evaluate B}
+    [] times(A B) then {Evaluate A} * {Evaluate B}
+    [] divide(A B) then {Evaluate A} / {Evaluate B}
+    end
+end
+
+fun {DivByZeroCheck record}
+    case record of int(I) then false
+    [] divide(A B) then
+        if {DivByZeroCheck A}
+            orelse {DivByZeroCheck B} then
+                true
+            else if {Evaluate B} == 0 then
+                true
+            else
+                false
+            end
+        end
+    else {DivByZeroCheck E.1} orelse {DivByZeroCheck E.2}
+    end
+end
+
+
+Task 3
+a)
+<num> ::= <digit> | <digit> <num>
+<digit> ::= 1 | 0
+
+b)
+We could change the order of <digit> and <num> to get a right-recursive grammar. Then we need to predefine if it's a right- or left-recursive grammar. If we use the grammar above, which is left-recursive, with a right-recursive grammar we could get an infinite loop.
+
+
+Task 4
+a) Not legal
+b) Not legal
+c) Not legal – We can not start with <C>
+d) Not legal – We have to start with a 'b'
+e) Legal – <S> -> a <A> b -> a a <A> b b -> a a b b
+f) Not legal – We can not end with an 'a'
+g) Not legal
+
+
+Task 5
+This grammar describes postfix notation.
+
+
+Task 6
+<S> ::= <SQLToken>
+<string> ::= any string
+<single_variable> ::= any variable
+<variable> ::= any variable | any variable <variable>
+<SQLToken> ::= ‘SELECT’ <variable> ‘FROM’ <variable> ‘WHERE’ <condition>
+<condition> ::= <single_variable> = <string> | <single_variable> = <int>
+<int> ::= <non_zero> | <digit>
+<digit> ::= 0 | <non_zero>
+<non_zero> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+This tries to build up as much of the SQL as possible, but there are some examples where we can get SQL sentences that are not allowed. Though the task examples work.
+
+
+Task 8
+<Sentence> ::= <NounPart> <VerbPart>
+<VerbPart> ::= <Verb> <Adj> | <Verb> <PrepPart>
+<PrepPart> ::= <Prep> <NounPart>
+<NounPart> ::= <Name> | <Object> <Name> | the <Object>
+<Object> ::= room
+<Prep> ::= in
+<Name> ::= Beeblebrox | Zaphod | Oslo | Z | Marvin
+<Adj> ::= Depressed
+<Verb> ::= sits | is | is not 
+
+
+Gjorde oppgave 8 og ikke 7
